@@ -1,10 +1,3 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
@@ -35,13 +28,11 @@ const Bio = () => {
       <h3>
         안녕하세요. <strong>프론트엔드 개발자 김지원</strong>입니다.
       </h3>
-      <h4>✨ Main Techs</h4>
-      <StackBox></StackBox>
-      <h4>✨ Techs that I've used at least once</h4>
-      <StackBox></StackBox>
-      <h4>✨ Tools</h4>
-
-      <StackBox></StackBox>
+      <h4>Hello, I'm Front-End Developer.</h4>
+      {/* <ContentTitle>Main Techs</ContentTitle>
+      TypeScript, NextJs, React, HTML, CSS, JavaScript
+      <ContentTitle>Tools</ContentTitle>
+      Git & github, Notion, Slack, Jira, */}
     </Container>
   )
 }
@@ -61,4 +52,9 @@ const StackBox = styled.div`
     height: 20px;
     border-radius: 10px;
   }
+`
+
+const ContentTitle = styled.div`
+  font-size: 22px;
+  font-weight: 600;
 `

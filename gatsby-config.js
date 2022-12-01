@@ -19,6 +19,12 @@ module.exports = {
         path: `${__dirname}/content/blog`,
         name: `blog`,
       },
+      web: [
+        {
+          name: `Open Sans`,
+          file: `https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap`,
+        },
+      ],
     },
     {
       resolve: `gatsby-source-filesystem`,

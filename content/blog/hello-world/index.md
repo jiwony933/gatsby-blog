@@ -1,231 +1,111 @@
 ---
-title: 안녕하세요
-date: "2022-11-01T22:12:03.284Z"
-description: "Hello World"
+title: 타입스크립트란?
+date: "2022-12-01"
+description: "Typescript에 대하여"
 ---
 
-This is my first post on my new fake blog! How exciting!@@@@
-
-I'm sure I'll write a lot more interesting things in the future.
-
-Oh, and here's a great quote from this Wikipedia on
-[salted duck eggs](https://en.wikipedia.org/wiki/Salted_duck_egg).
-
-> A salted duck egg is a Chinese preserved food product made by soaking duck
-> eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-> supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-> charcoal paste. The eggs may also be sold with the salted paste removed,
-> wrapped in plastic, and vacuum packed. From the salt curing process, the
-> salted duck eggs have a briny aroma, a gelatin-like egg white and a
-> firm-textured, round yolk that is bright orange-red in color.
-
-![Chinese Salty Egg](./salty_egg.jpg)
-
-You can also write code blocks here!
+> ### true일까 false일까?
 
 ```js
-const saltyDuckEgg = "chinese preserved food product"
+console.log("3" == 3)
 ```
 
-| Number | Title                                    | Year |
-| :----- | :--------------------------------------- | ---: |
-| 1      | Harry Potter and the Philosopher’s Stone | 2001 |
-| 2      | Harry Potter and the Chamber of Secrets  | 2002 |
-| 3      | Harry Potter and the Prisoner of Azkaban | 2004 |
+`javascript`에서는 `true`이지만, `typescript`에서는 `false`이다.
 
-[View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
+> 에러메세지는 아래와 같다.
+> (string과 number은 overlap이 없기 때문에 항상 false를 반환할 것)
+> ![](https://velog.velcdn.com/images/jiwonyyy/post/0b242506-4dd4-4f60-baff-30d65a3e923a/image.png)
 
-This is a paragraph.
+## Typescript가 뭘까?
 
-    This is a paragraph.
+### 우선 Type System이란?
 
-# Header 1
+값, 표현식, 함수, 모듈 등을 분류하는 규칙의 집합이다.
+보다 형식적으로는, *`"계산될 값을 분류하여 특정한 종류의 프로그램 오류가 일어나지 않음을 증명하는 계산 가능한 방법"`*으로 정의된다.
 
-## Header 2
+### Type Script
 
-    Header 1
-    ========
+![](https://velog.velcdn.com/images/jiwonyyy/post/8338228b-4038-4ece-99c1-088dce780be5/image.png)
 
-    Header 2
-    --------
+타입스크립트는 일반 자바스크립트로 컴파일이 되는 자바스크립트의 상위 호환언어라고 할 수 있는데, ‘Type’이라는 이름에서도 알 수 있듯이 강한 타입 시스템을 사용한다.
 
-# Header 1
+javascript는 선언할때 자료형을 굳이 명시하지 않아도 된다.
+하지만 typescript는 변수 옆에 number라고 자료형을 명시해야만 한다. 이걸 바로 type이라고 한다. javascript와 typescript의 가장 핵심적인 차이는 **_type이 있느냐 없느냐_**이다. Typescript는 변수에 타입을 선언할 수 있다(해야만 한다.)
 
-## Header 2
+```js
+// javascript
+const addWithJs = (a, b) => a + b
+// typescript
+const addWithTs = (a: number, b: string) => a + b
+```
 
-### Header 3
+![](https://velog.velcdn.com/images/jiwonyyy/post/fb0046d8-4e3a-456f-b52f-751457c0b22d/image.png)
 
-#### Header 4
+지정된 타입에 맞지 않게 코드를 작성하면, 위와 같이 VScode에서 에러를 띄워준다. (Typescript의 장점 중 하나는 VScode와 호환성이 매우 좋다는 점, 뒷쪽에 설명 할게요)
 
-##### Header 5
+### 타입스크립트 동작 방식
 
-###### Header 6
-
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> ## This is a header.
 >
-> 1. This is the first list item.
-> 2. This is the second list item.
->
-> Here's some example code:
->
->     Markdown.generate();
 
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     Markdown.generate();
+1. 개발자가 '타입스크립트 코드'로 작성을 한다
+2. 작성한 타입스크립트 코드는 '타입스크립트 컴파일러(tsc)'를 통해 파싱하여 '타입스크립트 AST 코드'로 변환된다.
+3. '타입 검사기(Typechecker)'를 통하여 파싱 된 '타입스크립트 AST 코드'의 타입을 체크한다.
+4. 타입스크립트 AST의 코드를 '자바스크립트 코드'로 변환한다.
 
-- Red
-- Green
-- Blue
+-- 해당 과정까지는 '타입스크립트 컴파일러(tsc)'에 의해 수행이 된다.
 
-* Red
-* Green
-* Blue
+> 5. 자바스크립트 코드를 '자바스크립트 AST 코드'로 파싱한다.
+> 6. 자바스크립트 AST를 '바이트 코드'로 변환된다.
+> 7. 런타임(runtime)이라는 실행환경에서 바이트 코드를 실행한다.
 
-- Red
-- Green
-- Blue
+-- 해당 과정까지는 '자바스크립트 런타임(js 엔진, node.js)'에 의해 수행이 된다.
 
-```markdown
-- Red
-- Green
-- Blue
+요약을 하자면,
 
-* Red
-* Green
-* Blue
+> TS → (컴파일(트랜스파일)) → JS → (실행)
 
-- Red
-- Green
-- Blue
-```
+### Typescript VS Javascript
 
-- `code goes` here in this line
-- **bold** goes here
+#### Typescript는 정적 타입 언어
 
-```markdown
-- `code goes` here in this line
-- **bold** goes here
-```
+'타입' 즉 자료형을 컴파일 시에 결정하는 것
+ex) C, C#, C++, Java
+이 언어들은 변수에 들어갈 값의 형태에 따라 자료형을 지정해줘야 한다.
+자료형에 맞지 않은 값이 들어있으면 컴파일 에러가 발생한다.
+타입 에러로 인한 문제점을 초기해 발견할 수 있어 타입의 안정성이 보장된다.
 
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
+#### javascript는 동적 타입 언어
 
-```markdown
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-```
+동적 타입 언어의 자료형은 컴파일시 자료형을 정하는 것이 아니고 실행 시에 결정한다.
+ex) javaScript, Ruby, Phthon
+런타임까지 타입에 대한 결정을 끌고 갈 수 있기 때문에 많은 선택의 여지가 있다. 다만, 실행도중에 변수에 예상치 못한 타입이 들어와 Type Error를 발생시킬 수 있다
 
-1. `code goes` here in this line
-1. **bold** goes here
+## TypeScript의 장점
 
-```markdown
-1. `code goes` here in this line
-1. **bold** goes here
-```
+### 1. 정적 타입 지원
 
-Paragraph:
+typescript를 사용하는 가장 큰 이유 중 하나는 정적타입을 지원한다는 것. 이말은 컴파일단계에서 오류를 포착할 수 있고 명시적인 정적타입 지정은 개발자의 의도를 명확하게 코드로 기술할 수 있다. 이는 코드의 가독성을 높이고 예측할 수 있게 하며 디버깅을 쉽게 한다.
 
-    Code
+### 2. IDE와 결합성
 
-<!-- -->
+Visual Studio Code(이하 vsc)와의 궁합이 엄청나다. TypeScript로 상상할 수 있는 모든 개발환경을 너무나 쉽게 구축 가능하다. 코드 피드백을 매우 잘 해주는데 특정 함수에서 어느 부분이 틀리게 작성되었다고 지적하는 것은 기본이고, 심지어 JQuery 함수에서 인수 갯수를 잘못 적어주어도 그 부분이 틀렸다고 바로 알려주기도 한다.
 
-    Paragraph:
+## TypeScript의 단점
 
-        Code
+사실 단점은 크게 단점이라고 할 수 없고,, 다소 귀찮은 부분이 조금 있다
 
----
+#### 1. 복잡한 세팅
 
----
+- 초기에 tsconfig.json을 통해 설정을 해주어야 함
+- 라이브러리 사용 시 type버전 라이브러리를 사용해야하는 경우도 있음
 
----
+#### 2. 코드 작성 시 불편함
 
----
+- 타입 추론이 되는 부분 외에는 타입을 정의해주어야 함.
 
----
+<br><br><br>
+`Typescript`를 처음 사용할 때에는 수많은 에러에 봉착하며,
+_아..자바스크립트였으면 더 쉬웠을텐데..._ 했었지만
+지금은 타입스크립트의 장점을 조금씩 몸소 느끼는 중이다..
 
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-
-This is [an example](http://example.com "Example") link.
-
-[This link](http://example.com) has no title attr.
-
-This is [an example][id] reference-style link.
-
-[id]: http://example.com "Optional Title"
-
-    This is [an example](http://example.com "Example") link.
-
-    [This link](http://example.com) has no title attr.
-
-    This is [an example] [id] reference-style link.
-
-    [id]: http://example.com "Optional Title"
-
-_single asterisks_
-
-_single underscores_
-
-**double asterisks**
-
-**double underscores**
-
-    *single asterisks*
-
-    _single underscores_
-
-    **double asterisks**
-
-    __double underscores__
-
-This paragraph has some `code` in it.
-
-    This paragraph has some `code` in it.
-
-![Alt Text](https://via.placeholder.com/200x50 "Image Title")
-
-    ![Alt Text](https://via.placeholder.com/200x50 "Image Title")
+다음번에는 타입스크립트를 사용하면서 겪었던 타입 에러에 대해서 정리해봐야지
